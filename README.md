@@ -21,5 +21,3 @@ https://arxiv.org/ftp/arxiv/papers/1808/1808.09369.pdf
  
 Lembrando que a tarefa é implementar os filtros em SystemVerilog e simular de forma a obter resposta temporal (ao impulso e a uma entrada arbitrária) e resposta em frequência. 
 Vocês tem liberdade de como fazer para gerar o sinal, obter a resposta e plotar.
-
-<https://teams.microsoft.com/l/message/19:pq9kuX9mpVm6nNDBSN639uPS0bgDHfP9MlQprLEp3kM1@thread.tacv2/1702557216524?tenantId=be197db6-2e7d-4fff-ad17-bc8384874bb5&amp;groupId=91a76477-c4dd-4b69-ae04-07dd530e3cb7&amp;parentMessageId=1702557216524&amp;teamName=Capacitação Lumen&amp;channelName=Geral&amp;createdTime=1702557216524&amp;allowXTenantAccess=false>

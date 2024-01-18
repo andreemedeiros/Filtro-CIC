@@ -1,3 +1,5 @@
+# Arquivo em Python para plotar os dados em um gráfico
+
 import matplotlib.pyplot as plt
 import vcd_parser  # Uma biblioteca hipotética para analisar arquivos VCD
 

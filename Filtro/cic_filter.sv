@@ -1,3 +1,14 @@
+/*-----------------------------------------------------------------
+Autor         : André Medeiros
+Criação       : 17/01/24
+E-mail        : andre.escariao1@gmail.com
+Arquivo       : cic_filter.sv
+
+Descrição     : Filtro CIC implementado em SystemVerilog com resposta
+temporal de simulação (ao impulso e a uma entrada arbitrária) e resposta
+em frequência.
+------------------------------------------------------------------*/
+
 module cic_filter #(
     parameter DATA_WIDTH = 16,   // Largura dos dados de entrada/saída
     parameter DECIMATION_FACTOR = 4  // Fator de decimação

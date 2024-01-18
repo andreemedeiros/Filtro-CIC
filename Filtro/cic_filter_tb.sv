@@ -1,3 +1,4 @@
+// Testbench de verificação para o filtro
 module cic_filter_tb;
 
     parameter DATA_WIDTH = 16;

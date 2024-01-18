@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------
 Autor         : André Medeiros
-Criação       : 17/01/24
+Criação       : 10/01/24
 E-mail        : andre.escariao1@gmail.com
 Arquivo       : cic_filter.sv
 

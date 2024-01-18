@@ -3,8 +3,6 @@
 # Nome dos arquivos SV (coloque os nomes reais aqui)
 SV_FILES = cic_filter.sv cic_filter_tb.sv
 
-
-
 # Comando para compilar e executar
 xrun:
 	xrun -sv $(SV_FILES)

@@ -17,7 +17,10 @@ Design de um Filtro CIC implementado em SystemVerilog com testbench de verifica�
 
 ```
 Licença Cadence/Xcelium.
-Python 3.10
+
+Python 3.10.
+
+Bibliotecas Python: Matplotlib e Numpy.
 ```
 
 ## Simulação

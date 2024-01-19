@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Caminho para o arquivo de resultados da simulação no diretório pai
-result_file_path = "../RTL/resultado_simulacao.txt" 
+result_file_path = "../tb/resultado_simulacao.txt" 
 
 # Função para ler os dados do arquivo de texto
 def read_simulation_results(file_path):

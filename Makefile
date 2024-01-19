@@ -3,14 +3,20 @@
 # Caminho para a pasta Filtro
 FILTRO_PATH = Filtro
 
-# Caminho para a pasta RTL
-RTL_PATH = Filtro/RTL
+# Caminho para a pasta rtl
+RTL_PATH = Filtro/rtl
 
-# Caminho para a pasta Plot
-PLOT_PATH = Filtro/Plot
+# Caminho para a pasta tb
+TB_PATH = Filtro/tb
 
-# Nome dos arquivos SV (coloque os nomes reais aqui)
-SV_FILES = cic_filter.sv cic_filter_tb.sv
+# Caminho para a pasta plot
+PY_PATH = Filtro/plot
+
+# Nome do arquivo RTL 
+RTL_FILE = $(RTL_PATH)/cic_filter.sv
+
+# Nome do arquivo testbench
+TB_FILE = $(TB_PATH)/cic_filter_tb.sv
 
 # Nome dos arquivos Python
 PY_FILES = cic_filter_analysis.py
@@ -20,12 +26,11 @@ all: xrun plot_results
 
 # Comando para compilar e executar
 xrun:
-	cd $(RTL_PATH); \
-	xrun -sv $(SV_FILES)
+	xrun -sv -incdir $(RTL_PATH) $(RTL_FILE) $(TB_FILE)
 
 # Comando para executar o script Python após a simulação
 plot_results: xrun
-	cd $(PLOT_PATH); \
+	cd $(PY_PATH); \
 	python $(PY_FILES)
 
 # Comando para limpar arquivos temporários

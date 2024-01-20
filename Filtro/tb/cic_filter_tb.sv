@@ -1,54 +1,76 @@
 // Testbench de verificação para o filtro
-
 module cic_filter_tb;
-    // Parâmetros de teste e sinais
-    parameter DATA_WIDTH = 16;
-    parameter DECIMATION_FACTOR = 4;
-    parameter CLK_PERIOD = 10; // Período de clock em ns
-    parameter NUM_SAMPLES = 1000; // Número de amostras para o teste
 
+    // Parâmetros do Testbench
+    parameter DATA_WIDTH = 16;
+    parameter CLK_PERIOD = 10; // Período do clock em ns
+
+    // Sinais do Testbench
     logic clk;
     logic reset;
     logic [DATA_WIDTH-1:0] data_in;
     logic [DATA_WIDTH-1:0] data_out;
 
-    // Instância do filtro CIC
-    cic_filter #(.DATA_WIDTH(DATA_WIDTH), .DECIMATION_FACTOR(DECIMATION_FACTOR))
-        dut (.clk(clk), .reset(reset), .data_in(data_in), .data_out(data_out));
+    // Variável para o arquivo
+    int file;
 
-    // Geração do clock
+    // Instância do Filtro CIC
+    cic_filter #(.DATA_WIDTH(DATA_WIDTH)) dut (
+        .clk(clk),
+        .reset(reset),
+        .data_in(data_in),
+        .data_out(data_out)
+    );
+
+    // Geração do Clock
     always #(CLK_PERIOD/2) clk = ~clk;
 
-    // Manipulador de arquivo para escrita de resultados
-    integer file_handle;
-
+    // Testes e Registro de Dados
     initial begin
-        // Inicializações
         clk = 0;
         reset = 1;
         data_in = 0;
-        file_handle = $fopen("resultado_simulacao.txt", "w");
-        if (file_handle == 0) begin
-            $display("Erro ao abrir o arquivo.");
-            $finish;
-        end
-        #(2*CLK_PERIOD);
+        #(2 * CLK_PERIOD);
         reset = 0;
 
-        // Estímulos de teste
-        repeat (NUM_SAMPLES) begin
-            data_in = $random;  // Gera um valor aleatório para data_in
+        // Abrindo o arquivo para gravação
+        file = $fopen("resultado_simulacao.txt", "w");
+
+        // Teste com Sinal de Impulso
+        data_in = 1;
+        #(CLK_PERIOD);
+        $fwrite(file, "Tempo: %0t, Valor de Saída: %0d\n", $time, data_out);
+        data_in = 0;
+        #(10 * CLK_PERIOD); // Espera para observar a resposta
+
+        // Teste com Sinal de Degrau
+        data_in = 1 << (DATA_WIDTH - 1); // Valor máximo para DATA_WIDTH bits
+        #(20 * CLK_PERIOD);
+        $fwrite(file, "Tempo: %0t, Valor de Saída: %0d\n", $time, data_out);
+        data_in = 0;
+        #(10 * CLK_PERIOD); // Espera para observar a resposta
+
+        // Teste com Sinal Senoidal
+        real sin_arg;
+        repeat (100) begin
+            sin_arg = 2 * 3.14159 * 1e-3 * $time;
+            data_in = $signed($rtoi(DATA_WIDTH'sd32767 * sin(sin_arg)));
             #(CLK_PERIOD);
+            $fwrite(file, "Tempo: %0t, Valor de Saída: %0d\n", $time, data_out);
         end
 
-        // Fechando o arquivo e terminando a simulação
-        #(CLK_PERIOD * 100); // Espera um tempo adicional após o último estímulo
-        $fclose(file_handle);
+        // Teste com Ruído Branco
+        repeat (100) begin
+            data_in = $urandom;
+            #(CLK_PERIOD);
+            $fwrite(file, "Tempo: %0t, Valor de Saída: %0d\n", $time, data_out);
+        end
+
+        // Fechando o arquivo
+        $fclose(file);
+
+        // Finaliza a simulação
         $finish;
     end
 
-    // Escreve os dados de saída no arquivo a cada borda de subida do clock
-    always @(posedge clk) begin
-        $fwrite(file_handle, "Tempo: %0t, Valor de Saída: %0d\n", $time, data_out);
-    end
 endmodule

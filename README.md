@@ -38,6 +38,7 @@ Após iniciar a simulação uma janela do Simvision e um gráfico em python ser�
 Visualização no Simvision.
 ![](sim.png)
 
+
 Gráfico em python.
 ![](plot.png)
 

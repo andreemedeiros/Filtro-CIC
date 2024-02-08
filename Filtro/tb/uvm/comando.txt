@@ -1,6 +1,5 @@
-xrun -uvm -f filelist.f -gui
-
 xrun -uvm -f filelist.f -R
 
+ou
 
 xrun -uvm top.sv cic_filter_test.sv cic_filter_env.sv cic_filter_if.sv cic_filter_monitor.sv cic_filter_agent.sv cic_filter_driver.sv cic_filter_scoreboard.sv cic_filter_transaction.sv -R

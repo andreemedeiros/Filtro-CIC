@@ -18,6 +18,8 @@ Design de um Filtro CIC implementado em SystemVerilog com testbench de verifica�
 ```
 Licença Cadence/Xcelium.
 
+Licença Cadence/Simvision.
+
 Python 3.10.
 
 Bibliotecas Python: Matplotlib e Numpy.
@@ -30,6 +32,14 @@ Para iniciar a simulação utilize o comando make.
 ```
 make
 ```
+
+Após iniciar a simulação uma janela do Simvision e um gráfico em python serão abertos.
+
+Visualização no Simvision.
+![](sim.png)
+
+Gráfico em python.
+![](plot.png)
 
 ## Autor
 

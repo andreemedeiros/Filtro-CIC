@@ -35,11 +35,11 @@ make
 
 Após iniciar a simulação uma janela do Simvision e um gráfico em python serão abertos.
 
-Visualização das ondas.
+Visualização CLK.
 
 ![](ondas.png)
 
-Visualização do RTL.
+Visualização RTL.
 
 ![](rtl.png)
 

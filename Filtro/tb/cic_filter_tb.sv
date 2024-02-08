@@ -37,22 +37,18 @@ module cic_filter_tb;
         file = $fopen("resultado_simulacao.txt", "w");
 
         // Teste com Sinal de Impulso
-        repeat (100) begin
-            data_in = 1;
-            #(CLK_PERIOD);
-            $fwrite(file, "Sinal de Impulso - Tempo: %0t, Valor de Saída: %0d\n", $time, data_out);
-            data_in = 0;
-            #(10 * CLK_PERIOD); // Espera para observar a resposta
-        end
-
+        data_in = 1;
+        #(CLK_PERIOD);
+        $fwrite(file, "Sinal de Impulso - Tempo: %0t, Valor de Saída: %0d\n", $time, data_out);
+        data_in = 0;
+        #(10 * CLK_PERIOD); // Espera para observar a resposta
+        
         // Teste com Sinal de Degrau
-        repeat (100) begin
-            data_in = 1 << (DATA_WIDTH - 1); // Valor máximo para DATA_WIDTH bits
+            data_in = 10 << (DATA_WIDTH - 1); // Valor máximo para DATA_WIDTH bits
             #(20 * CLK_PERIOD);
             $fwrite(file, "Sinal de Degrau - Tempo: %0t, Valor de Saída: %0d\n", $time, data_out);
             data_in = 0;
             #(10 * CLK_PERIOD); // Espera para observar a resposta
-        end
 
         // Teste com Ruído Branco
         repeat (100) begin

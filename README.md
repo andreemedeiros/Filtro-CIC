@@ -37,7 +37,7 @@ Após iniciar a simulação uma janela do Simvision e um gráfico em python ser�
 
 Visualização das ondas.
 
-![](sim.png)
+![](ondas.png)
 
 Visualização do RTL.
 

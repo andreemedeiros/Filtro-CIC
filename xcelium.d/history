@@ -1,0 +1,5 @@
+//
+// File created by:  xrun
+// Do not modify this file
+
+s1::(07Feb2024:23:22:18):( xrun -incdir Filtro/rtl Filtro/rtl/cic_filter.sv Filtro/tb/cic_filter_tb.sv -gui -access +rw -input waves.tcl )

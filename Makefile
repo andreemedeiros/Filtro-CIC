@@ -26,7 +26,7 @@ all: xrun plot_results
 
 # Comando para compilar e executar
 xrun:
-	xrun -sv -incdir $(RTL_PATH) $(RTL_FILE) $(TB_FILE)
+	xrun -incdir $(RTL_PATH) $(RTL_FILE) $(TB_FILE) -gui -access +rw -input waves.tcl
 
 # Comando para executar o script Python após a simulação
 plot_results: xrun

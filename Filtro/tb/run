@@ -1,3 +1,0 @@
-#!/bin/csh
-
-xrun cic_filter_tb.sv -gui -access +rw -input waves.tcl

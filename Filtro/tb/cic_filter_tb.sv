@@ -37,33 +37,28 @@ module cic_filter_tb;
         file = $fopen("resultado_simulacao.txt", "w");
 
         // Teste com Sinal de Impulso
-        data_in = 1;
-        #(CLK_PERIOD);
-        $fwrite(file, "Tempo: %0t, Valor de Saída: %0d\n", $time, data_out);
-        data_in = 0;
-        #(10 * CLK_PERIOD); // Espera para observar a resposta
+        repeat (100) begin
+            data_in = 1;
+            #(CLK_PERIOD);
+            $fwrite(file, "Sinal de Impulso - Tempo: %0t, Valor de Saída: %0d\n", $time, data_out);
+            data_in = 0;
+            #(10 * CLK_PERIOD); // Espera para observar a resposta
+        end
 
         // Teste com Sinal de Degrau
-        data_in = 1 << (DATA_WIDTH - 1); // Valor máximo para DATA_WIDTH bits
-        #(20 * CLK_PERIOD);
-        $fwrite(file, "Tempo: %0t, Valor de Saída: %0d\n", $time, data_out);
-        data_in = 0;
-        #(10 * CLK_PERIOD); // Espera para observar a resposta
-
-        // Teste com Sinal Senoidal
-        real sin_arg;
         repeat (100) begin
-            sin_arg = 2 * 3.14159 * 1e-3 * $time;
-            data_in = $signed($rtoi(DATA_WIDTH'sd32767 * sin(sin_arg)));
-            #(CLK_PERIOD);
-            $fwrite(file, "Tempo: %0t, Valor de Saída: %0d\n", $time, data_out);
+            data_in = 1 << (DATA_WIDTH - 1); // Valor máximo para DATA_WIDTH bits
+            #(20 * CLK_PERIOD);
+            $fwrite(file, "Sinal de Degrau - Tempo: %0t, Valor de Saída: %0d\n", $time, data_out);
+            data_in = 0;
+            #(10 * CLK_PERIOD); // Espera para observar a resposta
         end
 
         // Teste com Ruído Branco
         repeat (100) begin
             data_in = $urandom;
             #(CLK_PERIOD);
-            $fwrite(file, "Tempo: %0t, Valor de Saída: %0d\n", $time, data_out);
+            $fwrite(file, "Ruído Branco - Tempo: %0t, Valor de Saída: %0d\n", $time, data_out);
         end
 
         // Fechando o arquivo

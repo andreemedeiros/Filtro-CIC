@@ -1,0 +1,11 @@
++cic_filter_if.sv
++cic_filter.sv
++cic_filter_agent.sv
++cic_filter_driver.sv
++cic_filter_monitor.sv
++cic_filter_sequencer.sv
++cic_filter_transaction.sv
++cic_filter_scoreboard.sv
++cic_filter_env.sv
++cic_filter_test.sv
++tb_top.sv

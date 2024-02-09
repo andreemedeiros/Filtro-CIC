@@ -37,15 +37,15 @@ Após iniciar a simulação uma janela do Simvision e um gráfico em python ser�
 
 Visualização CLK.
 
-![](ondas.png)
+![](png/ondas.png)
 
 Visualização RTL.
 
-![](rtl.png)
+![](png/rtl.png)
 
 Visualização do Gráfico.
 
-![](plot.png)
+![](png/plot.png)
 
 ## Autor
 
